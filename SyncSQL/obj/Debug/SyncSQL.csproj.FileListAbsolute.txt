@@ -1,0 +1,53 @@
+C:\Temp\SyncSQL\SyncSQL\bin\Debug\SyncSQL.exe.config
+C:\Temp\SyncSQL\SyncSQL\bin\Debug\SyncSQL.exe
+C:\Temp\SyncSQL\SyncSQL\bin\Debug\SyncSQL.pdb
+C:\Temp\SyncSQL\SyncSQL\obj\Debug\SyncSQL.csprojResolveAssemblyReference.cache
+C:\Temp\SyncSQL\SyncSQL\obj\Debug\SyncSQL.exe
+C:\Temp\SyncSQL\SyncSQL\obj\Debug\SyncSQL.pdb
+C:\Temp\SyncSQL\SyncSQL\bin\Debug\EntityFramework.dll
+C:\Temp\SyncSQL\SyncSQL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Temp\SyncSQL\SyncSQL\bin\Debug\EntityFramework.xml
+C:\Temp\SyncSQL\SyncSQL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Temp\SyncSQL tb\SyncSQL\bin\Debug\SyncSQL.exe.config
+C:\Temp\SyncSQL tb\SyncSQL\obj\Debug\SyncSQL.exe
+C:\Temp\SyncSQL tb\SyncSQL\obj\Debug\SyncSQL.pdb
+C:\Temp\SyncSQL tb\SyncSQL\obj\Debug\SyncSQL.csprojResolveAssemblyReference.cache
+C:\Temp\SyncSQL tb\SyncSQL\bin\Debug\SyncSQL.exe
+C:\Temp\SyncSQL tb\SyncSQL\bin\Debug\SyncSQL.pdb
+C:\Temp\SyncSQL tb\SyncSQL\bin\Debug\EntityFramework.dll
+C:\Temp\SyncSQL tb\SyncSQL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Temp\SyncSQL tb\SyncSQL\bin\Debug\EntityFramework.xml
+C:\Temp\SyncSQL tb\SyncSQL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Temp\SyncSQL 11.08\SyncSQL\bin\Debug\SyncSQL.exe.config
+C:\Temp\SyncSQL 11.08\SyncSQL\obj\Debug\SyncSQL.exe
+C:\Temp\SyncSQL 11.08\SyncSQL\obj\Debug\SyncSQL.pdb
+C:\Temp\SyncSQL 14.08\SyncSQL\bin\Debug\SyncSQL.exe.config
+C:\Temp\SyncSQL 14.08\SyncSQL\obj\Debug\SyncSQL.exe
+C:\Temp\SyncSQL 14.08\SyncSQL\obj\Debug\SyncSQL.pdb
+C:\Temp\SyncSQL 14.08\SyncSQL\bin\Debug\SyncSQL.exe
+C:\Temp\SyncSQL 14.08\SyncSQL\bin\Debug\SyncSQL.pdb
+C:\Temp\SyncSQL 14.08\SyncSQL\bin\Debug\EntityFramework.dll
+C:\Temp\SyncSQL 14.08\SyncSQL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Temp\SyncSQL 14.08\SyncSQL\bin\Debug\EntityFramework.xml
+C:\Temp\SyncSQL 14.08\SyncSQL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Temp\SyncSQL 14.08\SyncSQL\obj\Debug\SyncSQL.csprojResolveAssemblyReference.cache
+C:\Temp\projects\SyncSQL\SyncSQL\bin\Debug\SyncSQL.exe.config
+C:\Temp\projects\SyncSQL\SyncSQL\obj\Debug\SyncSQL.exe
+C:\Temp\projects\SyncSQL\SyncSQL\obj\Debug\SyncSQL.pdb
+C:\Temp\projects\SyncSQL\SyncSQL\bin\Debug\SyncSQL.exe
+C:\Temp\projects\SyncSQL\SyncSQL\bin\Debug\SyncSQL.pdb
+C:\Temp\projects\SyncSQL\SyncSQL\bin\Debug\EntityFramework.dll
+C:\Temp\projects\SyncSQL\SyncSQL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Temp\projects\SyncSQL\SyncSQL\bin\Debug\EntityFramework.xml
+C:\Temp\projects\SyncSQL\SyncSQL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Temp\projects\SyncSQL\SyncSQL\obj\Debug\SyncSQL.csprojResolveAssemblyReference.cache
+C:\Temp\github\SyncSQL\SyncSQL\bin\Debug\SyncSQL.exe.config
+C:\Temp\github\SyncSQL\SyncSQL\obj\Debug\SyncSQL.exe
+C:\Temp\github\SyncSQL\SyncSQL\obj\Debug\SyncSQL.pdb
+C:\Temp\github\SyncSQL\SyncSQL\bin\Debug\SyncSQL.exe
+C:\Temp\github\SyncSQL\SyncSQL\bin\Debug\SyncSQL.pdb
+C:\Temp\github\SyncSQL\SyncSQL\bin\Debug\EntityFramework.dll
+C:\Temp\github\SyncSQL\SyncSQL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Temp\github\SyncSQL\SyncSQL\bin\Debug\EntityFramework.xml
+C:\Temp\github\SyncSQL\SyncSQL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Temp\github\SyncSQL\SyncSQL\obj\Debug\SyncSQL.csprojResolveAssemblyReference.cache

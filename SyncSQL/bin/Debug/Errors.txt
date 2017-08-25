@@ -1,0 +1,16 @@
+24.08.2017 13:17:16
+ErrorsOccurred: System.Data.SqlClient.SqlException (0x80131904): Нарушение "PK5HOWI9kvWvdAdwsTFAqM63Lnmw" ограничения PRIMARY KEY. Невозможно вставить повторяющийся ключ в объект "dbo.omuDistrict".
+Выполнение данной инструкции было прервано.
+   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   в System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   в Microsoft.Synchronization.Data.DbChangeHandler.ExecuteCommandReturnRowcount(IDbCommand command, Boolean& found)
+   в Microsoft.Synchronization.Data.DbChangeHandler.ExecuteChangeApplicationCommandBase(IDbCommand command, SyncRowMetadata rowMetadata, String commandName)
+ClientConnectionId:ce2fff7d-4763-4c0d-8372-1b1d6bd3c53d
+Error Number:2627,State:1,Class:14
