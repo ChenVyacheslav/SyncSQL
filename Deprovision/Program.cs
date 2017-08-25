@@ -30,6 +30,13 @@ namespace Deprovision
                     serverScopeDeprovisioning.DeprovisionScope(sсhemeScope.Name);
                     db.SсhemeScopes.Remove(sсhemeScope);
                 }
+
+                var tables = db.MatchingTableNames.Where(m => m.InScope.Value == 1).ToList();
+                foreach (var table in tables)
+                {
+                    table.InScope = 0;
+                }
+
                 db.SaveChanges();
             }
         }
