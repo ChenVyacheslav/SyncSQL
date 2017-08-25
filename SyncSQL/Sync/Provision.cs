@@ -60,16 +60,51 @@ namespace SyncSQL.Sync
             {
                 UpdateExistingScopeProvision(clientProvision, configuration.ClientSqlConnection, false);
             }
+
+            using (var db = new SystemContext())
+            {
+                var changeTables = db.MatchingTableNames.Where(m => m.ScopeIgnore == null || m.ScopeIgnore.Value == 0).OrderBy(m => m.Index).ToList();
+                foreach (var changeTable in changeTables)
+                {
+                    changeTable.InScope = 1;
+                }
+                db.SaveChanges();
+            }
+
         }
 
         private void UpdateExistingScopeProvision(SqlSyncScopeProvisioning provision, SqlConnection conn, bool isServer)
         {
             string alterScopeSql = string.Empty;
-            provision.SetCreateProceduresDefault(DbSyncCreationOption.CreateOrUseExisting);
+            provision.SetCreateProceduresDefault(DbSyncCreationOption.Create);
             provision.SetUseBulkProceduresDefault(true);
 
             provision.SetCreateTrackingTableDefault(DbSyncCreationOption.CreateOrUseExisting);
-            alterScopeSql = provision.Script();
+            var provisioningScript = provision.Script();
+            //alterScopeSql = provision.Script();
+
+            var stringBuilder = new StringBuilder();
+            var changedTables = tables.Where(t => t.InScope.Value == 1).ToList();
+
+            foreach (var changedTable in changedTables) 
+            {
+                var tableName = isServer ? changedTable.ServerTableName : changedTable.ClientTableName;
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_bulkinsert];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_bulkupdate];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_bulkdelete];");
+                stringBuilder.AppendLine("DROP TYPE [" + tableName + "_BulkType];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_selectchanges];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_selectrow];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_insert];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_update];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_delete];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_insertmetadata];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_updatemetadata];");
+                stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_deletemetadata];");
+            }
+
+            // append the sync provisioning script after the drop statements
+            alterScopeSql = stringBuilder.Append(provisioningScript).ToString();
 
             int x = alterScopeSql.IndexOf("N'<SqlSyncProviderScopeConfiguration");
             int y = alterScopeSql.IndexOf("</SqlSyncProviderScopeConfiguration>");

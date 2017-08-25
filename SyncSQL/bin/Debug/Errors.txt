@@ -1,5 +1,8 @@
-25.08.2017 11:25:29
-System.Data.SqlClient.SqlException (0x80131904): В базе данных уже существует объект с именем "tbl_Territory_tracking".
+25.08.2017 14:00:21
+System.Data.SqlClient.SqlException (0x80131904): Не удалось удалить процедура "tbl_State_bulkinsert", так как он не существует или отсутствуют разрешения.
+Не удалось удалить процедура "tbl_State_bulkupdate", так как он не существует или отсутствуют разрешения.
+Не удалось удалить процедура "tbl_State_bulkdelete", так как он не существует или отсутствуют разрешения.
+Не удалось найти тип "tbl_State_BulkType". Либо он не существует, либо нет необходимых разрешений.
    в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
    в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
@@ -7,8 +10,8 @@ System.Data.SqlClient.SqlException (0x80131904): В базе данных уже
    в System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
    в System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
    в System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
-   в SyncSQL.Sync.Provision.UpdateExistingScopeProvision(SqlSyncScopeProvisioning provision, SqlConnection conn, Boolean isServer) в c:\Temp\github\SyncSQL\SyncSQL\Sync\Provision.cs:строка 121
+   в SyncSQL.Sync.Provision.UpdateExistingScopeProvision(SqlSyncScopeProvisioning provision, SqlConnection conn, Boolean isServer) в c:\Temp\github\SyncSQL\SyncSQL\Sync\Provision.cs:строка 122
    в SyncSQL.Sync.Provision.Run() в c:\Temp\github\SyncSQL\SyncSQL\Sync\Provision.cs:строка 45
    в SyncSQL.Program.Main(String[] args) в c:\Temp\github\SyncSQL\SyncSQL\Program.cs:строка 16
-ClientConnectionId:9f4aea34-d605-4221-b558-04f525c980df
-Error Number:2714,State:6,Class:16
+ClientConnectionId:b370f6df-ccd5-4264-a30b-c779b416780b
+Error Number:3701,State:5,Class:11
