@@ -21,7 +21,7 @@ namespace SyncSQL
             catch (Exception ex)
             {
                 Console.WriteLine(DateTime.Now.ToString() + '\n' + ex.ToString());
-                File.AppendAllText("Errors.txt", DateTime.Now.ToString() + '\n' + ex.ToString());
+                File.WriteAllText("Errors.txt", DateTime.Now.ToString() + '\n' + ex.ToString());
             }
         }
     }

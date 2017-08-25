@@ -42,7 +42,7 @@ namespace SyncSQL.Sync
             }
             else
             {
-                UpdateExistingScopeProvision(serverProvision, configuration.ServerSqlConnection);
+                UpdateExistingScopeProvision(serverProvision, configuration.ServerSqlConnection, true);
             }
 
             //CLIENT PROVISION
@@ -58,35 +58,18 @@ namespace SyncSQL.Sync
             }
             else
             {
-                UpdateExistingScopeProvision(clientProvision, configuration.ClientSqlConnection);
+                UpdateExistingScopeProvision(clientProvision, configuration.ClientSqlConnection, false);
             }
         }
 
-        private void UpdateExistingScopeProvision(SqlSyncScopeProvisioning provision, SqlConnection conn)
+        private void UpdateExistingScopeProvision(SqlSyncScopeProvisioning provision, SqlConnection conn, bool isServer)
         {
             string alterScopeSql = string.Empty;
             provision.SetCreateProceduresDefault(DbSyncCreationOption.CreateOrUseExisting);
             provision.SetUseBulkProceduresDefault(true);
 
             provision.SetCreateTrackingTableDefault(DbSyncCreationOption.CreateOrUseExisting);
-            var provisioningScript = provision.Script();
-
-            /*var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_bulkinsert];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_bulkupdate];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_bulkdelete];");
-            stringBuilder.AppendLine("DROP TYPE [TestTable_BulkType];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_selectchanges];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_selectrow];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_insert];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_update];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_delete];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_insertmetadata];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_updatemetadata];");
-            stringBuilder.AppendLine("DROP PROCEDURE [TestTable_deletemetadata];");
-
-            // append the sync provisioning script after the drop statements
-            alterScopeSql = stringBuilder.Append(provisioningScript).ToString();*/
+            alterScopeSql = provision.Script();
 
             int x = alterScopeSql.IndexOf("N'<SqlSyncProviderScopeConfiguration");
             int y = alterScopeSql.IndexOf("</SqlSyncProviderScopeConfiguration>");

@@ -30,8 +30,6 @@ namespace SyncSQL.Models
 
         public int? Index { get; set; }
 
-        public int? Reinitialize { get; set; }
-
         public int? ScopeIgnore { get; set; }
     }
 }
