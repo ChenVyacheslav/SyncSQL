@@ -3,6 +3,7 @@ using Microsoft.Synchronization.Data.SqlServer;
 using SyncSQL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -86,7 +87,7 @@ namespace SyncSQL.Sync
             var stringBuilder = new StringBuilder();
             var changedTables = tables.Where(t => t.InScope.Value == 1).ToList();
 
-            foreach (var changedTable in changedTables) 
+            foreach (var changedTable in changedTables)
             {
                 var tableName = isServer ? changedTable.ServerTableName : changedTable.ClientTableName;
                 stringBuilder.AppendLine("DROP PROCEDURE [" + tableName + "_bulkinsert];");
