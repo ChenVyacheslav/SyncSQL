@@ -75,12 +75,10 @@ namespace SyncSQL.Sync
                         dataTable.Columns[tableColumn.ClientColumnName].ColumnName = tableColumn.ServerColumnName;
                     }
 
-                    var tableColumnsCheckNull = tableColumns.Where(t => t.ServerColumnNullCheck == 1 || t.ClientColumnNullCheck == 1).ToList();
+                    var serverNullColumns = tableColumns.Where(t => t.ServerColumnNullCheck == 1).ToList();
 
-                    if (tableColumnsCheckNull.Any())
+                    if (serverNullColumns.Any())
                     {
-                        var clientNullColumns = tableColumnsCheckNull.Where(t => t.ClientColumnNullCheck == 1).ToList();
-                        var serverNullColumns = tableColumnsCheckNull.Where(t => t.ServerColumnNullCheck == 1).ToList();
                         for (int j = 0; j < dataTable.Rows.Count; j++)
                         {
                             DataRow row = dataTable.Rows[j];
@@ -89,16 +87,19 @@ namespace SyncSQL.Sync
                                 //if (String.IsNullOrEmpty(row["Description"].ToString()))
                                 //    row["Description"] = DBNull.Value;
 
-                                foreach (var clientNullColumn in clientNullColumns) //Передаем на сервер вместо null значения по умолчанию (NULL на клиенте)
-                                {
-                                    if (row[clientNullColumn.ClientColumnName] == DBNull.Value)
-                                        row[clientNullColumn.ClientColumnName] = clientNullColumn.IsNullDefaultValue;
-                                }
+                                //foreach (var clientNullColumn in clientNullColumns) //Передаем на сервер вместо null значения по умолчанию (NULL на клиенте)
+                                //{
+                                //    if (row[clientNullColumn.ClientColumnName] == DBNull.Value)
+                                //        row[clientNullColumn.ClientColumnName] = clientNullColumn.IsNullDefaultValue;
+                                //}
 
                                 foreach (var serverNullColumn in serverNullColumns) //Передаем на сервер вместо пустых значений null (NULL на сервере)
                                 {
-                                    if (String.IsNullOrEmpty(row[serverNullColumn.ClientColumnName].ToString()))
-                                        row[serverNullColumn.ClientColumnName] = DBNull.Value;
+
+                                    if ((serverNullColumn.ServerColumnFieldType == 1 || serverNullColumn.ServerColumnFieldType == 2) && Convert.ToInt32(row[serverNullColumn.ServerColumnName]) == 0)
+                                        row[serverNullColumn.ServerColumnName] = DBNull.Value;
+                                    else if ((serverNullColumn.ServerColumnFieldType == 3 || serverNullColumn.ServerColumnFieldType == 8) && String.IsNullOrEmpty(row[serverNullColumn.ServerColumnName].ToString()))
+                                        row[serverNullColumn.ServerColumnName] = DBNull.Value;
                                 }
                             }
                         }
@@ -122,12 +123,10 @@ namespace SyncSQL.Sync
                         dataTable.Columns[tableColumn.ServerColumnName].ColumnName = tableColumn.ClientColumnName;
                     }
 
-                    var tableColumnsCheckNull = tableColumns.Where(t => t.ServerColumnNullCheck == 1 || t.ClientColumnNullCheck == 1).ToList();
+                    var serverNullColumns = tableColumns.Where(t => t.ServerColumnNullCheck == 1).ToList();
 
-                    if (tableColumnsCheckNull.Any())
+                    if (serverNullColumns.Any())
                     {
-                        var clientNullColumns = tableColumnsCheckNull.Where(t => t.ClientColumnNullCheck == 1).ToList();
-                        var serverNullColumns = tableColumnsCheckNull.Where(t => t.ServerColumnNullCheck == 1).ToList();
                         for (int j = 0; j < dataTable.Rows.Count; j++)
                         {
                             DataRow row = dataTable.Rows[j];
@@ -136,16 +135,18 @@ namespace SyncSQL.Sync
                                 //if (String.IsNullOrEmpty(row["Description"].ToString()))
                                 //    row["Description"] = DBNull.Value;
 
-                                foreach (var clientNullColumn in clientNullColumns) //Передаем на клиент вместо пустых значений null (NULL на клиенте)
-                                {
-                                    if (String.IsNullOrEmpty(row[clientNullColumn.ServerColumnName].ToString()))
-                                        row[clientNullColumn.ServerColumnName] = DBNull.Value;
-                                }
+                                //foreach (var clientNullColumn in clientNullColumns) //Передаем на клиент вместо пустых значений null (NULL на клиенте)
+                                //{
+                                //    if (String.IsNullOrEmpty(row[clientNullColumn.ServerColumnName].ToString()))
+                                //        row[clientNullColumn.ServerColumnName] = DBNull.Value;
+                                //}
 
                                 foreach (var serverNullColumn in serverNullColumns) //Передаем на клиент вместо null значения по умолчанию (NULL на сервере)
                                 {
-                                    if (row[serverNullColumn.ServerColumnName] == DBNull.Value)
-                                        row[serverNullColumn.ServerColumnName] = serverNullColumn.IsNullDefaultValue;
+                                    if ((serverNullColumn.ServerColumnFieldType == 1 || serverNullColumn.ServerColumnFieldType == 2) && row[serverNullColumn.ServerColumnName] == DBNull.Value)
+                                        row[serverNullColumn.ServerColumnName] = 0;
+                                    else if ((serverNullColumn.ServerColumnFieldType == 3 || serverNullColumn.ServerColumnFieldType == 8) && row[serverNullColumn.ServerColumnName] == DBNull.Value)
+                                        row[serverNullColumn.ServerColumnName] = "";
                                 }
                             }
                         }

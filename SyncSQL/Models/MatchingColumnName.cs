@@ -33,5 +33,7 @@ namespace SyncSQL.Models
         public int? ClientColumnNullCheck { get; set; }
 
         public string IsNullDefaultValue { get; set; }
+
+        public int? ServerColumnFieldType { get; set; }
     }
 }
