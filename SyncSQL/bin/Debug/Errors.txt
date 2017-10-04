@@ -1,16 +1,16 @@
-22.09.2017 9:50:16
-ErrorsOccurred: System.Data.SqlClient.SqlException (0x80131904): Не удалось вставить значение NULL в столбец "Description", таблицы "BPMonline.dbo.Territory"; в столбце запрещены значения NULL. Ошибка в UPDATE.
-Выполнение данной инструкции было прервано.
-   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
-   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
-   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
-   в System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
-   в System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
-   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
-   в System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
-   в System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
-   в Microsoft.Synchronization.Data.DbChangeHandler.ExecuteCommandReturnRowcount(IDbCommand command, Boolean& found)
-   в Microsoft.Synchronization.Data.DbChangeHandler.ExecuteChangeApplicationCommandBase(IDbCommand command, SyncRowMetadata rowMetadata, String commandName)
-ClientConnectionId:9296e641-a631-4c91-bf1a-4a315cc537a3
-Error Number:515,State:2,Class:16
+04.10.2017 8:39:31
+System.ArgumentException: Столбец "omuRegionCode" не принадлежит таблице tbl_State.
+   в System.Data.DataRow.GetDataColumn(String columnName)
+   в System.Data.DataRow.get_Item(String columnName)
+   в SyncSQL.Sync.Synchronize.localProvider_ChangesSelected(Object sender, DbChangesSelectedEventArgs e) в c:\Temp\github\SyncSQL\SyncSQL\Sync\Synchronize.cs:строка 100
+   в Microsoft.Synchronization.Data.RelationalSyncProvider.OnChangesSelected(DbChangesSelectedEventArgs value)
+   в Microsoft.Synchronization.Data.RelationalSyncProvider.GetChanges(DbSyncScopeMetadata scopeMetadata, DbSyncSession DbSyncSession, UInt32 memoryBatchSize)
+   в Microsoft.Synchronization.Data.RelationalSyncProvider.GetChangeBatch(UInt32 batchSize, SyncKnowledge destinationKnowledge, Object& changeDataRetriever)
+   в Microsoft.Synchronization.KnowledgeProviderProxy.GetChangeBatch(UInt32 dwBatchSize, ISyncKnowledge pSyncKnowledge, ISyncChangeBatch& ppChangeBatch, Object& ppUnkDataRetriever)
+   в Microsoft.Synchronization.CoreInterop.ISyncSession.Start(CONFLICT_RESOLUTION_POLICY resolutionPolicy, _SYNC_SESSION_STATISTICS& pSyncSessionStatistics)
+   в Microsoft.Synchronization.KnowledgeSyncOrchestrator.DoOneWaySyncHelper(SyncIdFormatGroup sourceIdFormats, SyncIdFormatGroup destinationIdFormats, KnowledgeSyncProviderConfiguration destinationConfiguration, SyncCallbacks DestinationCallbacks, ISyncProvider sourceProxy, ISyncProvider destinationProxy, ChangeDataAdapter callbackChangeDataAdapter, SyncDataConverter conflictDataConverter, Int32& changesApplied, Int32& changesFailed)
+   в Microsoft.Synchronization.KnowledgeSyncOrchestrator.DoOneWayKnowledgeSync(SyncDataConverter sourceConverter, SyncDataConverter destinationConverter, SyncProvider sourceProvider, SyncProvider destinationProvider, Int32& changesApplied, Int32& changesFailed)
+   в Microsoft.Synchronization.KnowledgeSyncOrchestrator.Synchronize()
+   в Microsoft.Synchronization.SyncOrchestrator.Synchronize()
+   в SyncSQL.Sync.Synchronize.Run() в c:\Temp\github\SyncSQL\SyncSQL\Sync\Synchronize.cs:строка 53
+   в SyncSQL.Program.Main(String[] args) в c:\Temp\github\SyncSQL\SyncSQL\Program.cs:строка 19

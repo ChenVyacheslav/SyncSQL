@@ -84,18 +84,8 @@ namespace SyncSQL.Sync
                             DataRow row = dataTable.Rows[j];
                             if (row.RowState != DataRowState.Deleted)
                             {
-                                //if (String.IsNullOrEmpty(row["Description"].ToString()))
-                                //    row["Description"] = DBNull.Value;
-
-                                //foreach (var clientNullColumn in clientNullColumns) //Передаем на сервер вместо null значения по умолчанию (NULL на клиенте)
-                                //{
-                                //    if (row[clientNullColumn.ClientColumnName] == DBNull.Value)
-                                //        row[clientNullColumn.ClientColumnName] = clientNullColumn.IsNullDefaultValue;
-                                //}
-
                                 foreach (var serverNullColumn in serverNullColumns) //Передаем на сервер вместо пустых значений null (NULL на сервере)
                                 {
-
                                     if ((serverNullColumn.ServerColumnFieldType == 1 || serverNullColumn.ServerColumnFieldType == 2) && Convert.ToInt32(row[serverNullColumn.ServerColumnName]) == 0)
                                         row[serverNullColumn.ServerColumnName] = DBNull.Value;
                                     else if ((serverNullColumn.ServerColumnFieldType == 3 || serverNullColumn.ServerColumnFieldType == 8) && String.IsNullOrEmpty(row[serverNullColumn.ServerColumnName].ToString()))
@@ -132,21 +122,12 @@ namespace SyncSQL.Sync
                             DataRow row = dataTable.Rows[j];
                             if (row.RowState != DataRowState.Deleted)
                             {
-                                //if (String.IsNullOrEmpty(row["Description"].ToString()))
-                                //    row["Description"] = DBNull.Value;
-
-                                //foreach (var clientNullColumn in clientNullColumns) //Передаем на клиент вместо пустых значений null (NULL на клиенте)
-                                //{
-                                //    if (String.IsNullOrEmpty(row[clientNullColumn.ServerColumnName].ToString()))
-                                //        row[clientNullColumn.ServerColumnName] = DBNull.Value;
-                                //}
-
                                 foreach (var serverNullColumn in serverNullColumns) //Передаем на клиент вместо null значения по умолчанию (NULL на сервере)
                                 {
-                                    if ((serverNullColumn.ServerColumnFieldType == 1 || serverNullColumn.ServerColumnFieldType == 2) && row[serverNullColumn.ServerColumnName] == DBNull.Value)
-                                        row[serverNullColumn.ServerColumnName] = 0;
-                                    else if ((serverNullColumn.ServerColumnFieldType == 3 || serverNullColumn.ServerColumnFieldType == 8) && row[serverNullColumn.ServerColumnName] == DBNull.Value)
-                                        row[serverNullColumn.ServerColumnName] = "";
+                                    if ((serverNullColumn.ServerColumnFieldType == 1 || serverNullColumn.ServerColumnFieldType == 2) && row[serverNullColumn.ClientColumnName] == DBNull.Value)
+                                        row[serverNullColumn.ClientColumnName] = 0;
+                                    else if ((serverNullColumn.ServerColumnFieldType == 3 || serverNullColumn.ServerColumnFieldType == 8) && row[serverNullColumn.ClientColumnName] == DBNull.Value)
+                                        row[serverNullColumn.ClientColumnName] = "";
                                 }
                             }
                         }
