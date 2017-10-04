@@ -1,16 +1,14 @@
-04.10.2017 8:39:31
-System.ArgumentException: Столбец "omuRegionCode" не принадлежит таблице tbl_State.
-   в System.Data.DataRow.GetDataColumn(String columnName)
-   в System.Data.DataRow.get_Item(String columnName)
-   в SyncSQL.Sync.Synchronize.localProvider_ChangesSelected(Object sender, DbChangesSelectedEventArgs e) в c:\Temp\github\SyncSQL\SyncSQL\Sync\Synchronize.cs:строка 100
-   в Microsoft.Synchronization.Data.RelationalSyncProvider.OnChangesSelected(DbChangesSelectedEventArgs value)
-   в Microsoft.Synchronization.Data.RelationalSyncProvider.GetChanges(DbSyncScopeMetadata scopeMetadata, DbSyncSession DbSyncSession, UInt32 memoryBatchSize)
-   в Microsoft.Synchronization.Data.RelationalSyncProvider.GetChangeBatch(UInt32 batchSize, SyncKnowledge destinationKnowledge, Object& changeDataRetriever)
-   в Microsoft.Synchronization.KnowledgeProviderProxy.GetChangeBatch(UInt32 dwBatchSize, ISyncKnowledge pSyncKnowledge, ISyncChangeBatch& ppChangeBatch, Object& ppUnkDataRetriever)
-   в Microsoft.Synchronization.CoreInterop.ISyncSession.Start(CONFLICT_RESOLUTION_POLICY resolutionPolicy, _SYNC_SESSION_STATISTICS& pSyncSessionStatistics)
-   в Microsoft.Synchronization.KnowledgeSyncOrchestrator.DoOneWaySyncHelper(SyncIdFormatGroup sourceIdFormats, SyncIdFormatGroup destinationIdFormats, KnowledgeSyncProviderConfiguration destinationConfiguration, SyncCallbacks DestinationCallbacks, ISyncProvider sourceProxy, ISyncProvider destinationProxy, ChangeDataAdapter callbackChangeDataAdapter, SyncDataConverter conflictDataConverter, Int32& changesApplied, Int32& changesFailed)
-   в Microsoft.Synchronization.KnowledgeSyncOrchestrator.DoOneWayKnowledgeSync(SyncDataConverter sourceConverter, SyncDataConverter destinationConverter, SyncProvider sourceProvider, SyncProvider destinationProvider, Int32& changesApplied, Int32& changesFailed)
-   в Microsoft.Synchronization.KnowledgeSyncOrchestrator.Synchronize()
-   в Microsoft.Synchronization.SyncOrchestrator.Synchronize()
-   в SyncSQL.Sync.Synchronize.Run() в c:\Temp\github\SyncSQL\SyncSQL\Sync\Synchronize.cs:строка 53
-   в SyncSQL.Program.Main(String[] args) в c:\Temp\github\SyncSQL\SyncSQL\Program.cs:строка 19
+04.10.2017 9:04:15
+System.Data.SqlClient.SqlException (0x80131904): В базе данных уже существует объект с именем "tbl_Rayon_selectchanges".
+   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   в System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   в SyncSQL.Sync.Provision.UpdateExistingScopeProvision(SqlSyncScopeProvisioning provision, SqlConnection conn, Boolean isServer) в c:\Temp\github\SyncSQL\SyncSQL\Sync\Provision.cs:строка 134
+   в SyncSQL.Sync.Provision.Run() в c:\Temp\github\SyncSQL\SyncSQL\Sync\Provision.cs:строка 46
+   в SyncSQL.Program.Main(String[] args) в c:\Temp\github\SyncSQL\SyncSQL\Program.cs:строка 16
+ClientConnectionId:adc662e8-b2ca-40d7-845b-61f997727a7b
+Error Number:2714,State:3,Class:16

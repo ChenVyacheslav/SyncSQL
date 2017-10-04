@@ -50,10 +50,12 @@ namespace SyncSQL.Sync
 
             ((SqlSyncProvider)syncOrchestrator.LocalProvider).ApplyChangeFailed += new EventHandler<DbApplyChangeFailedEventArgs>(Program_ApplyChangeFailed);
 
+
+            Console.WriteLine("Start Time: " + DateTime.Now);
             var syncStats = syncOrchestrator.Synchronize();
 
             // print statistics
-            Console.WriteLine("Start Time: " + syncStats.SyncStartTime);
+            //Console.WriteLine("Start Time: " + syncStats.SyncStartTime);
             Console.WriteLine("Total Changes Uploaded: " + syncStats.UploadChangesTotal);
             Console.WriteLine("Total Changes Downloaded: " + syncStats.DownloadChangesTotal);
             Console.WriteLine("Complete Time: " + syncStats.SyncEndTime);
